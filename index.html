@@ -1,0 +1,406 @@
+
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="Information about cats">
+  <meta name="author" content="Cat Website">
+
+  <title>Cat</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="assets/dist/css/bootstrap.min.css">
+
+  <!-- Light / Dark Mode -->
+  <script src="assets/js/color-modes.js"></script>
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .b-example-divider {
+      width: 100%;
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow:
+        inset 0 .5em 1.5em rgba(0, 0, 0, .1),
+        inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
+
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+
+    .nav-scroller {
+      position: relative;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
+
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .btn-bd-primary {
+      --bd-violet-bg: #712cf9;
+      --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+      --bs-btn-font-weight: 600;
+      --bs-btn-color: var(--bs-white);
+      --bs-btn-bg: var(--bd-violet-bg);
+      --bs-btn-border-color: var(--bd-violet-bg);
+
+      --bs-btn-hover-color: var(--bs-white);
+      --bs-btn-hover-bg: #6528e0;
+      --bs-btn-hover-border-color: #6528e0;
+
+      --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+
+      --bs-btn-active-color: var(--bs-btn-hover-color);
+      --bs-btn-active-bg: #5a23c8;
+      --bs-btn-active-border-color: #5a23c8;
+    }
+
+    .bd-mode-toggle {
+      z-index: 1500;
+    }
+
+    .bd-mode-toggle .dropdown-menu .active .bi {
+      display: block !important;
+    }
+
+    /* Cat images */
+    .cat-image {
+      width: 100%;
+      max-width: 400px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .cat-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Color mode icons -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+
+    <symbol id="check2" viewBox="0 0 16 16">
+      <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+    </symbol>
+
+    <symbol id="circle-half" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+    </symbol>
+
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+      <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+      <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162z"/>
+    </symbol>
+
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+      <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2A.5.5 0 0 1 3 8z"/>
+    </symbol>
+
+  </svg>
+
+  <!-- Theme toggle -->
+  <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+
+    <button
+      class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+      id="bd-theme"
+      type="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+      aria-label="Toggle theme (auto)">
+
+      <svg class="bi my-1 theme-icon-active"
+           width="1em"
+           height="1em">
+        <use href="#circle-half"></use>
+      </svg>
+
+      <span class="visually-hidden" id="bd-theme-text">
+        Toggle theme
+      </span>
+
+    </button>
+
+    <ul class="dropdown-menu dropdown-menu-end shadow"
+        aria-labelledby="bd-theme-text">
+
+      <!-- Light -->
+      <li>
+        <button
+          type="button"
+          class="dropdown-item d-flex align-items-center"
+          data-bs-theme-value="light">
+
+          <svg class="bi me-2 opacity-50"
+               width="1em"
+               height="1em">
+            <use href="#sun-fill"></use>
+          </svg>
+
+          Light
+
+          <svg class="bi ms-auto d-none"
+               width="1em"
+               height="1em">
+            <use href="#check2"></use>
+          </svg>
+
+        </button>
+      </li>
+
+      <!-- Dark -->
+      <li>
+        <button
+          type="button"
+          class="dropdown-item d-flex align-items-center"
+          data-bs-theme-value="dark">
+
+          <svg class="bi me-2 opacity-50"
+               width="1em"
+               height="1em">
+            <use href="#moon-stars-fill"></use>
+          </svg>
+
+          Dark
+
+          <svg class="bi ms-auto d-none"
+               width="1em"
+               height="1em">
+            <use href="#check2"></use>
+          </svg>
+
+        </button>
+      </li>
+
+      <!-- Auto -->
+      <li>
+        <button
+          type="button"
+          class="dropdown-item d-flex align-items-center active"
+          data-bs-theme-value="auto">
+
+          <svg class="bi me-2 opacity-50"
+               width="1em"
+               height="1em">
+            <use href="#circle-half"></use>
+          </svg>
+
+          Auto
+
+          <svg class="bi ms-auto d-none"
+               width="1em"
+               height="1em">
+            <use href="#check2"></use>
+          </svg>
+
+        </button>
+      </li>
+
+    </ul>
+  </div>
+
+  <main>
+    <div class="container py-4">
+
+      <!-- Header -->
+      <header class="pb-3 mb-4 border-bottom">
+
+        <a href="index.html"
+           class="d-flex align-items-center text-body-emphasis text-decoration-none">
+
+          <img
+            src="assets/images/cat_logo.jpg"
+            class="cat-logo me-2"
+            alt="Cat Logo">
+
+          <span class="fs-4">
+            Cat
+          </span>
+
+        </a>
+
+      </header>
+
+      <!-- Hero -->
+      <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+
+        <div class="container-fluid py-5">
+
+          <h1 class="display-5 fw-bold">
+            Cat
+          </h1>
+
+          <p class="col-md-8 fs-4">
+            Cats are small domesticated mammals that are popular pets
+            around the world. They are known for their agility,
+            independence, curiosity, and playful behavior.
+          </p>
+
+          <a
+            class="btn btn-primary btn-lg"
+            href="https://en.wikipedia.org/wiki/Cat"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            More..
+
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Cats -->
+      <div class="row align-items-md-stretch">
+
+        <!-- Siamese Cat -->
+        <div class="col-md-6 mb-4">
+
+          <div class="h-100 p-5 text-bg-dark rounded-3">
+
+            <h2>
+              Siamese Cat (แมววิเชียรมาศ)
+            </h2>
+
+            <p>
+              Siamese cats, also known as Wichien Maat,
+              originated in Thailand. They are known for
+              their beautiful blue eyes, short cream-colored
+              coat, and dark points on their face, ears,
+              paws, and tail. They are intelligent,
+              affectionate, playful, and social cats.
+            </p>
+
+            <p>
+              <strong>Origin:</strong> Thailand<br>
+              <strong>Coat:</strong> Short, cream with dark points<br>
+              <strong>Eyes:</strong> Blue<br>
+              <strong>Personality:</strong> Intelligent, social, affectionate<br>
+              <strong>Lifespan:</strong> Approximately 12-20 years
+            </p>
+
+            <img
+              src="assets/images/male_cat.jpg"
+              class="cat-image"
+              alt="Siamese Cat">
+
+            <br><br>
+
+            <a
+              class="btn btn-outline-light"
+              href="https://en.wikipedia.org/wiki/Siamese_cat"
+              target="_blank"
+              rel="noopener noreferrer">
+
+              More..
+
+            </a>
+
+          </div>
+        </div>
+
+        <!-- Domestic Cat -->
+        <div class="col-md-6 mb-4">
+
+          <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+
+            <h2>
+              Domestic Cat (แมวพื้นบ้าน)
+            </h2>
+
+            <p>
+              Domestic cats are common household cats with
+              diverse ancestry. They come in many different
+              colors, patterns, and body sizes. They are
+              adaptable, curious, and playful.
+              Their personalities vary from cat to cat.
+            </p>
+
+            <p>
+              <strong>Origin:</strong> Worldwide<br>
+              <strong>Coat:</strong> Various colors and patterns<br>
+              <strong>Eyes:</strong> Various colors<br>
+              <strong>Personality:</strong> Curious, playful, adaptable<br>
+              <strong>Lifespan:</strong> Approximately 12-18 years
+            </p>
+
+            <img
+              src="assets/images/female_cat.jpg"
+              class="cat-image"
+              alt="Domestic Cat">
+
+            <br><br>
+
+            <a
+              class="btn btn-outline-secondary"
+              href="https://en.wikipedia.org/wiki/Domestic_short-haired_cat"
+              target="_blank"
+              rel="noopener noreferrer">
+
+              More..
+
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <footer class="pt-3 mt-4 text-body-secondary border-top">
+
+        &copy; 2025 Cat
+
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
